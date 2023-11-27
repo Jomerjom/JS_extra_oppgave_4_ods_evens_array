@@ -7,11 +7,10 @@ Du skal med andre ord ikke skrive 100 forskjellige tall selv i et array, men gen
 
 let randomNumbers = [];
 for (let i = 0; i < 100; i++) {
-    randomNumbers.push(Math.floor(Math.random() * 100000) + 1);
+  randomNumbers.push(Math.floor(Math.random() * 100000) + 1);
 }
 
 console.log(randomNumbers);
-
 
 /* 
 2. lag en funksjon som bruker array metoden .filter til å filtrere ut oddetall og partall. 
@@ -41,20 +40,21 @@ sånn her burde konsollen se ut (kun brukt 10 tilfeldige tall her for at det ikk
 */
 //Kode her:
 let oddsEvens = [
-    { odds: [
-        randomNumbers.filter(function (number) {
-            return number % 2 !== 0;
-        })
+  {
+    odds: [
+      randomNumbers.filter(function (number) {
+        return number % 2 !== 0;
+      }),
     ],
-     evens: [
-        randomNumbers.filter(function (number) {
-            return number % 2 === 0;
-        })
-    ] }
+    evens: [
+      randomNumbers.filter(function (number) {
+        return number % 2 === 0;
+      }),
+    ],
+  },
 ];
 
 console.log(oddsEvens);
-
 
 /* 
 3. konsoll logg antall oddetall og partall med å referere
@@ -69,30 +69,44 @@ evens: ${oddsEvens[0].evens[0].length}`);
 */
 //Kode her:
 function sumOfArray(array) {
-    let sum = 0;
-    for (let i = 0; i < array.length; i++) {
-        sum = sum + array[i];
-    }
-    return sum;
+  let sum = 0;
+  for (let i = 0; i < array.length; i++) {
+    sum = sum + array[i];
+  }
+  return sum;
 }
 console.log(`Sum of odds: ${sumOfArray(oddsEvens[0].odds[0])}`);
 console.log(`Sum of evens: ${sumOfArray(oddsEvens[0].evens[0])}`);
-
-
 
 /*
 5. konsoll log hvilken av de 2 summene i oppgave 4 som er størst
 */
 //Kode her:
-const largestSum = sumOfArray(oddsEvens[0].odds[0]) > sumOfArray(oddsEvens[0].evens[0]) ? "Sum of odds is largest" : "Sum of evens is largest";
+const largestSum =
+  sumOfArray(oddsEvens[0].odds[0]) > sumOfArray(oddsEvens[0].evens[0])
+    ? "Sum of odds is largest"
+    : "Sum of evens is largest";
 console.log(largestSum);
-
-
 
 /*
 6. finn differansen mellom odds og evens (største - minste). Konsoll logg resultatet
 */
 //Kode her:
+
+const sumDiffrence = () => {
+  return (
+    Math.max(
+      sumOfArray(oddsEvens[0].odds[0]),
+      sumOfArray(oddsEvens[0].evens[0])
+    ) -
+    Math.min(
+      sumOfArray(oddsEvens[0].odds[0]),
+      sumOfArray(oddsEvens[0].evens[0])
+    )
+  );
+};
+
+console.log(`Sum diffrence: ${sumDiffrence()}`);
 
 /*
 7.  bruk conditionals for å konsoll logge ut en setning som forteller hvilken 
@@ -100,3 +114,13 @@ sum som er størst og hvilken som er minst. Ta med antall odds og even i stringe
 som konsoll logges ut. Eks på hva som kan vises:
 */
 //Kode her:
+
+const sumAndLength =
+  sumOfArray(oddsEvens[0].odds[0]) > sumOfArray(oddsEvens[0].evens[0])
+    ? `Odds is largest with ${sumOfArray(oddsEvens[0].odds[0])} and ${
+        oddsEvens[0].odds[0].length
+      } numbers`
+    : `Evens is largest with ${sumOfArray(oddsEvens[0].evens[0])} and ${
+        oddsEvens[0].evens[0].length
+      } numbers`;
+console.log(sumAndLength);
