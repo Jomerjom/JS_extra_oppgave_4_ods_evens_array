@@ -124,3 +124,59 @@ const sumAndLength =
         oddsEvens[0].evens[0].length
       } numbers`;
 console.log(sumAndLength);
+
+
+// 8. Få ut dataene på nettsiden med DOM      
+  const ctx = document.getElementById('sumChart');
+
+  new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: ['Odds', `Evens`, `Diffrence`],
+      datasets: [{
+        label: 'Sum',
+        data: [sumOfArray(oddsEvens[0].odds[0]), sumOfArray(oddsEvens[0].evens[0]), sumDiffrence()],
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      },
+      plugins: {
+        title: {
+            display: true,
+            text: 'Sum of odds and evens'
+        }
+    }
+    }
+  });
+
+  const ctx2 = document.getElementById('lengthChart');
+
+  new Chart(ctx2, {
+    type: 'pie',
+    data: {
+      labels: ['Odds', `Evens`],
+      datasets: [{
+        label: 'Length',
+        data: [oddsEvens[0].odds[0].length, oddsEvens[0].evens[0].length],
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      },
+      plugins: {
+          title: {
+              display: true,
+              text: 'Number of odds and evens'
+          }
+      }
+    }
+  });

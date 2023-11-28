@@ -3,3 +3,17 @@
     padding: 0;
     box-sizing: border-box;
 }
+
+body {
+    display: flex;
+    flex-direction: row;
+}
+
+div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: auto;
+}
