@@ -125,58 +125,66 @@ const sumAndLength =
       } numbers`;
 console.log(sumAndLength);
 
+// 8. Få ut dataene på nettsiden med DOM
+const ctx = document.getElementById("sumChart");
 
-// 8. Få ut dataene på nettsiden med DOM      
-  const ctx = document.getElementById('sumChart');
-
-  new Chart(ctx, {
-    type: 'bar',
-    data: {
-      labels: ['Odds', `Evens`, `Diffrence`],
-      datasets: [{
-        label: 'Sum',
-        data: [sumOfArray(oddsEvens[0].odds[0]), sumOfArray(oddsEvens[0].evens[0]), sumDiffrence()],
-        borderWidth: 1
-      }]
-    },
-    options: {
-      scales: {
-        y: {
-          beginAtZero: true
-        }
+new Chart(ctx, {
+  type: "bar",
+  data: {
+    labels: ["Odds", `Evens`, `Diffrence`],
+    datasets: [
+      {
+        label: "Sum",
+        data: [
+          sumOfArray(oddsEvens[0].odds[0]),
+          sumOfArray(oddsEvens[0].evens[0]),
+          sumDiffrence(),
+        ],
+        backgroundColor: [`rgba(54, 162, 235, 1)`, `rgba(255, 99, 132, 1)`, `rgba(55, 150, 200, 0.8)`],
+        borderWidth: 1,
       },
-      plugins: {
-        title: {
-            display: true,
-            text: 'Sum of odds and evens'
-        }
-    }
-    }
-  });
+    ],
+  },
+  options: {
+    scales: {
+      y: {
+        beginAtZero: true,
+      },
+    },
+    plugins: {
+      title: {
+        display: true,
+        text: "Sum of odds and evens",
+      },
+    },
+  },
+});
 
-  const ctx2 = document.getElementById('lengthChart');
+const ctx2 = document.getElementById("lengthChart");
 
-  new Chart(ctx2, {
-    type: 'pie',
-    data: {
-      labels: ['Odds', `Evens`],
-      datasets: [{
-        label: 'Length',
+new Chart(ctx2, {
+  type: "pie",
+  data: {
+    labels: ["Odds", `Evens`],
+    datasets: [
+      {
+        label: "Length",
         data: [oddsEvens[0].odds[0].length, oddsEvens[0].evens[0].length],
-        borderWidth: 1
-      }]
-    },
-    options: {
-      scales: {
-        y: {
-          beginAtZero: true
-        }
+        borderWidth: 1,
       },
-      plugins: {
-          title: {
-              display: true,
-              text: 'Number of odds and evens'
-          }
-      }
-    }
-  });
+    ],
+  },
+  options: {
+    scales: {
+      y: {
+        beginAtZero: true,
+      },
+    },
+    plugins: {
+      title: {
+        display: true,
+        text: "Number of odds and evens",
+      },
+    },
+  },
+});
